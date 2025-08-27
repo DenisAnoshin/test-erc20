@@ -1,0 +1,24 @@
+services:
+  hardhat:
+    build: .
+    working_dir: /app
+    command: bash -lc "npx hardhat node"
+    environment:
+      NPM_CONFIG_LOGLEVEL: error
+    ports:
+      - "8545:8545"
+
+  app:
+    build: .
+    depends_on:
+      - hardhat
+    working_dir: /app
+    environment:
+      RPC_URL: http://hardhat:8545
+      PORT: ${PORT:-3001}
+      NPM_CONFIG_LOGLEVEL: error
+    command: bash -lc "bash ./docker-entrypoint.app.sh"
+    ports:
+      - "${PORT:-3001}:${PORT:-3001}"
+
+

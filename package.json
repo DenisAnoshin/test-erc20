@@ -1,0 +1,41 @@
+{
+  "name": "test-erc20",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ERC20 smart contract with Express.js backend using Viem",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "clean": "rimraf cache artifacts deployments dist dist-scripts",
+    "compile": "hardhat compile",
+    "dev:node": "hardhat node",
+    "deploy:local": "hardhat run scripts/deploy.ts --network localhost",
+    "start": "node --enable-source-maps dist/server.js",
+    "build": "tsc -p tsconfig.json",
+    "start:dev": "tsx watch src/server.ts"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "swagger-ui-express": "^5.0.0",
+    "viem": "^2.20.1"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^6.0.0",
+    "@openzeppelin/contracts": "^5.0.2",
+    "@types/chai": "^4.3.20",
+    "@types/express": "^4.17.21",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^22.7.5",
+    "@types/swagger-ui-express": "^4.1.8",
+    "ethers": "^6.13.1",
+    "hardhat": "^2.26.0",
+    "rimraf": "^6.0.1",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.2"
+  },
+  "overrides": {
+    "glob": "^10.4.5"
+  }
+}
